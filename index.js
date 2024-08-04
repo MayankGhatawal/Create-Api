@@ -9,7 +9,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Lets Create a API for Shopping');
 })
-
+// Show All The API's
 app.get('/api/products', async (req, res) => {
     try {
         const product = await Product.find({})
@@ -19,6 +19,7 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
+// Show onlyOne API
 app.get('/api/product/:id', async (req, res) => {
     try {
         const {id} = req.params;
@@ -29,6 +30,7 @@ app.get('/api/product/:id', async (req, res) => {
     }
 });
 
+// Create a new API
 app.post('/api/products', async (req, res) => {
     try {
         const producttop = await Product.create(req.body);
@@ -38,6 +40,7 @@ app.post('/api/products', async (req, res) => {
     }
 });
 
+// MongoDB connection
 mongoose.connect('mongodb://localhost:27017')
 .then(()=>{
     console.log('Connected to MongoDB');
